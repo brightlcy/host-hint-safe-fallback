@@ -100,5 +100,14 @@ class ReproductionSafetyTest(unittest.TestCase):
             with self.subTest(field=field), self.assertRaises(ValueError):
                 reproduce.validate_historical_final_config(changed, frozen)
 
+    def test_finalize_refuses_a_running_replay_without_launching_work(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            run = Path(temporary)
+            (run / 'run_manifest.json').write_text(json.dumps({'project': 'online_hotcold_ftl', 'action': 'replay', 'status': 'RUNNING'}))
+            output = run / 'validation-output'
+            with self.assertRaisesRegex(ValueError, 'has not finished'):
+                reproduce.finalize_existing_run(run, output, {})
+            self.assertFalse(output.exists())
+
 if __name__ == '__main__':
     unittest.main()

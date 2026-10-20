@@ -4,7 +4,7 @@
     "status": "PASS",
     "test_count": 206
   },
-  "latest_test_count": 213,
+  "latest_test_count": 214,
   "limitations": [
     "Original final held-out seeds are reused for historical replay, not new generalization evidence.",
     "Production final replay requires separately restored clean original Git history and tags.",
@@ -606,9 +606,118 @@
         "source_file_count": 36,
         "status": "PASS"
       }
+    },
+    {
+      "action": "tests",
+      "commands": [
+        {
+          "argv": [
+            "/opt/homebrew/opt/python@3.14/bin/python3.14",
+            "-m",
+            "unittest",
+            "discover",
+            "-s",
+            "tests",
+            "-v"
+          ],
+          "finished_at_utc": "2026-10-20T05:51:56.202282Z",
+          "log": "tests.log",
+          "log_sha256": "83ef56e06b16d7f344ee87770e923a318588542307c093a2a64e15b5f964e8d7",
+          "returncode": 0,
+          "started_at_utc": "2026-10-20T05:51:51.099892Z"
+        },
+        {
+          "argv": [
+            "/opt/homebrew/opt/python@3.14/bin/python3.14",
+            "-m",
+            "simulator.run_baseline",
+            "--help"
+          ],
+          "finished_at_utc": "2026-10-20T05:51:56.292546Z",
+          "log": "help-run_baseline.log",
+          "log_sha256": "ef0b391c529f65eeb3e2f7e4744fb40fd54275d68662b8678cbfa9a645f71ad1",
+          "returncode": 0,
+          "started_at_utc": "2026-10-20T05:51:56.203054Z"
+        },
+        {
+          "argv": [
+            "/opt/homebrew/opt/python@3.14/bin/python3.14",
+            "-m",
+            "simulator.run_compare_hot_cold",
+            "--help"
+          ],
+          "finished_at_utc": "2026-10-20T05:51:56.374017Z",
+          "log": "help-run_compare_hot_cold.log",
+          "log_sha256": "210077b586b9499233ba8e9b419651a81f6526dfbc68c812163ef7377eb0d8c0",
+          "returncode": 0,
+          "started_at_utc": "2026-10-20T05:51:56.293262Z"
+        },
+        {
+          "argv": [
+            "/opt/homebrew/opt/python@3.14/bin/python3.14",
+            "-m",
+            "simulator.run_lifetime_experiment",
+            "--help"
+          ],
+          "finished_at_utc": "2026-10-20T05:51:56.454111Z",
+          "log": "help-run_lifetime_experiment.log",
+          "log_sha256": "1adf0ebe32e5a169321fa901938e06a1f03445a154452582859bbdc2c7a89fa6",
+          "returncode": 0,
+          "started_at_utc": "2026-10-20T05:51:56.374747Z"
+        },
+        {
+          "argv": [
+            "/opt/homebrew/opt/python@3.14/bin/python3.14",
+            "-m",
+            "simulator.run_persistence_development",
+            "--help"
+          ],
+          "finished_at_utc": "2026-10-20T05:51:56.550388Z",
+          "log": "help-run_persistence_development.log",
+          "log_sha256": "b87f806c8da1a8400f4d197e45f959136335caa6343b5f911764f9d803d36e58",
+          "returncode": 0,
+          "started_at_utc": "2026-10-20T05:51:56.454827Z"
+        },
+        {
+          "argv": [
+            "/opt/homebrew/opt/python@3.14/bin/python3.14",
+            "-m",
+            "simulator.run_persistence_final",
+            "--help"
+          ],
+          "finished_at_utc": "2026-10-20T05:51:56.643688Z",
+          "log": "help-run_persistence_final.log",
+          "log_sha256": "520918e4d1fcb8550d2a425c8a5969397bacdb9d63e7a110d832106c99bf0137",
+          "returncode": 0,
+          "started_at_utc": "2026-10-20T05:51:56.551079Z"
+        }
+      ],
+      "evidence_class": "SOFTWARE_VALIDATION",
+      "experiment_id": "20261020T055150Z-tests-483fd8d4",
+      "finished_at_utc": "2026-10-20T05:51:56.644412Z",
+      "git_commit_sha": "73664fb0f7fea91260ba0d17fd8a36978c402a0a",
+      "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+      "python_version": "3.14.6",
+      "run_manifest_relative_path": "artifacts/runs/20261020T055150Z-tests-483fd8d4/run_manifest.json",
+      "run_manifest_sha256": "68380277cc9d0bc5520481754cc93618e369471030cd0bfe230d9cb18b0d56d3",
+      "runner_sha256": "89394459823b9554f56def8db90dc695f4968f213b86fb91ecff134931a400ec",
+      "started_at_utc": "2026-10-20T05:51:50.964024Z",
+      "status": "PASS",
+      "test_count": 214,
+      "test_log_sha256": "83ef56e06b16d7f344ee87770e923a318588542307c093a2a64e15b5f964e8d7",
+      "verification": {
+        "archive_member_count": 18,
+        "archive_sha256": "80fc2001c4744fd26c48ee6f75267a13f5a88d63129c5d0add9af7162a037838",
+        "errors": [],
+        "frozen_tag_file_checks": 8,
+        "reference_commit": "73664fb0f7fea91260ba0d17fd8a36978c402a0a",
+        "scope": "Export byte preservation and archive/manifest consistency; no experiment replay in verify.",
+        "source_file_count": 36,
+        "status": "PASS"
+      }
     }
   ],
   "schema_version": 1,
   "status": "PASS_WITH_LIMITATIONS",
-  "updated_at_utc": "2026-10-20T05:43:23.926115+00:00"
+  "updated_at_utc": "2026-10-20T05:52:39.340291+00:00"
 }

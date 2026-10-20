@@ -49,12 +49,12 @@
         "tests",
         "-v"
       ],
-      "cwd": "/private/var/folders/vb/9h6x5l497hg35vf6h33nbklc0000gn/T/host_hint_safe_fallback-standalone-oalmnxh6/host_hint_safe_fallback",
-      "finished_at_utc": "2026-10-20T05:43:43.874335Z",
+      "cwd": "/private/var/folders/vb/9h6x5l497hg35vf6h33nbklc0000gn/T/host_hint_safe_fallback-standalone-t4elaqqm/host_hint_safe_fallback",
+      "finished_at_utc": "2026-10-20T05:52:55.732501Z",
       "log": "tests.log",
-      "log_sha256": "b0fbe6c422786aae9de65b7b031f62cdac790739da035c45e05a0724265cd740",
+      "log_sha256": "1ff8b5e77141e33805c5fc9795cfd64af79a4b9fdbb375eeba0956fa08500d5d",
       "returncode": 0,
-      "started_at_utc": "2026-10-20T05:43:38.203280Z"
+      "started_at_utc": "2026-10-20T05:52:52.604426Z"
     },
     {
       "argv": [
@@ -63,12 +63,12 @@
         "simulator.run_baseline",
         "--help"
       ],
-      "cwd": "/private/var/folders/vb/9h6x5l497hg35vf6h33nbklc0000gn/T/host_hint_safe_fallback-standalone-oalmnxh6/host_hint_safe_fallback",
-      "finished_at_utc": "2026-10-20T05:43:43.972779Z",
+      "cwd": "/private/var/folders/vb/9h6x5l497hg35vf6h33nbklc0000gn/T/host_hint_safe_fallback-standalone-t4elaqqm/host_hint_safe_fallback",
+      "finished_at_utc": "2026-10-20T05:52:55.808743Z",
       "log": "help-run_baseline.log",
       "log_sha256": "ef0b391c529f65eeb3e2f7e4744fb40fd54275d68662b8678cbfa9a645f71ad1",
       "returncode": 0,
-      "started_at_utc": "2026-10-20T05:43:43.875376Z"
+      "started_at_utc": "2026-10-20T05:52:55.733188Z"
     },
     {
       "argv": [
@@ -77,12 +77,12 @@
         "simulator.run_compare_hot_cold",
         "--help"
       ],
-      "cwd": "/private/var/folders/vb/9h6x5l497hg35vf6h33nbklc0000gn/T/host_hint_safe_fallback-standalone-oalmnxh6/host_hint_safe_fallback",
-      "finished_at_utc": "2026-10-20T05:43:44.069361Z",
+      "cwd": "/private/var/folders/vb/9h6x5l497hg35vf6h33nbklc0000gn/T/host_hint_safe_fallback-standalone-t4elaqqm/host_hint_safe_fallback",
+      "finished_at_utc": "2026-10-20T05:52:55.885538Z",
       "log": "help-run_compare_hot_cold.log",
       "log_sha256": "210077b586b9499233ba8e9b419651a81f6526dfbc68c812163ef7377eb0d8c0",
       "returncode": 0,
-      "started_at_utc": "2026-10-20T05:43:43.973564Z"
+      "started_at_utc": "2026-10-20T05:52:55.809433Z"
     },
     {
       "argv": [
@@ -91,12 +91,12 @@
         "simulator.run_lifetime_experiment",
         "--help"
       ],
-      "cwd": "/private/var/folders/vb/9h6x5l497hg35vf6h33nbklc0000gn/T/host_hint_safe_fallback-standalone-oalmnxh6/host_hint_safe_fallback",
-      "finished_at_utc": "2026-10-20T05:43:44.184209Z",
+      "cwd": "/private/var/folders/vb/9h6x5l497hg35vf6h33nbklc0000gn/T/host_hint_safe_fallback-standalone-t4elaqqm/host_hint_safe_fallback",
+      "finished_at_utc": "2026-10-20T05:52:55.963960Z",
       "log": "help-run_lifetime_experiment.log",
       "log_sha256": "1adf0ebe32e5a169321fa901938e06a1f03445a154452582859bbdc2c7a89fa6",
       "returncode": 0,
-      "started_at_utc": "2026-10-20T05:43:44.070187Z"
+      "started_at_utc": "2026-10-20T05:52:55.886124Z"
     },
     {
       "argv": [
@@ -105,12 +105,12 @@
         "simulator.run_persistence_development",
         "--help"
       ],
-      "cwd": "/private/var/folders/vb/9h6x5l497hg35vf6h33nbklc0000gn/T/host_hint_safe_fallback-standalone-oalmnxh6/host_hint_safe_fallback",
-      "finished_at_utc": "2026-10-20T05:43:44.308467Z",
+      "cwd": "/private/var/folders/vb/9h6x5l497hg35vf6h33nbklc0000gn/T/host_hint_safe_fallback-standalone-t4elaqqm/host_hint_safe_fallback",
+      "finished_at_utc": "2026-10-20T05:52:56.055436Z",
       "log": "help-run_persistence_development.log",
       "log_sha256": "b87f806c8da1a8400f4d197e45f959136335caa6343b5f911764f9d803d36e58",
       "returncode": 0,
-      "started_at_utc": "2026-10-20T05:43:44.185116Z"
+      "started_at_utc": "2026-10-20T05:52:55.964574Z"
     },
     {
       "argv": [
@@ -119,12 +119,12 @@
         "simulator.run_persistence_final",
         "--help"
       ],
-      "cwd": "/private/var/folders/vb/9h6x5l497hg35vf6h33nbklc0000gn/T/host_hint_safe_fallback-standalone-oalmnxh6/host_hint_safe_fallback",
-      "finished_at_utc": "2026-10-20T05:43:44.422292Z",
+      "cwd": "/private/var/folders/vb/9h6x5l497hg35vf6h33nbklc0000gn/T/host_hint_safe_fallback-standalone-t4elaqqm/host_hint_safe_fallback",
+      "finished_at_utc": "2026-10-20T05:52:56.147765Z",
       "log": "help-run_persistence_final.log",
       "log_sha256": "520918e4d1fcb8550d2a425c8a5969397bacdb9d63e7a110d832106c99bf0137",
       "returncode": 0,
-      "started_at_utc": "2026-10-20T05:43:44.309418Z"
+      "started_at_utc": "2026-10-20T05:52:56.056091Z"
     }
   ],
   "config_sha256": {
@@ -133,8 +133,8 @@
     "configs/runtime.json": "cb6fe938c9c3793f6dfdc99e3c7c969f60a798bb1ca59906602a5f88581814cb",
     "configs/smoke.json": "42d8c325024503d8dbaad54f1e096e9633052d7218608d56b50fdc049d4103fa"
   },
-  "experiment_id": "20261020T054338Z-tests-a833d927",
-  "finished_at_utc": "2026-10-20T05:43:44.423203Z",
+  "experiment_id": "20261020T055252Z-tests-9e1ad707",
+  "finished_at_utc": "2026-10-20T05:52:56.148453Z",
   "git_branch": null,
   "git_commit_sha": null,
   "git_worktree_status": null,
@@ -143,7 +143,7 @@
   "python_executable": "/opt/homebrew/opt/python@3.14/bin/python3.14",
   "python_version": "3.14.6",
   "reference_manifest_sha256": "5ceba666cfef2ed05ef48fbcf54b8392dc6578531f35135d80be3021059fe243",
-  "runner_sha256": "d2d1f916531692a404902eeeb187dc4c0c6680df3d2ce918c3a424cb463006c6",
+  "runner_sha256": "89394459823b9554f56def8db90dc695f4968f213b86fb91ecff134931a400ec",
   "schema_version": 1,
   "source_hash_semantics": "source_sha256 is the expected preserved export; actual_source_sha256 records executed bytes.",
   "source_sha256": {
@@ -184,10 +184,10 @@
     "simulator/trace_io.py": "0d67939e91e84c9f6c2bd779f1e73c92b2b0deaa4ed7d77cb69ebfcdb188e1fc",
     "simulator/workload_profile.py": "7d181077d41f32d8efb0eed44335863fec6f5895df05fc049ce99f0ba39c2ffd"
   },
-  "started_at_utc": "2026-10-20T05:43:38.084384Z",
+  "started_at_utc": "2026-10-20T05:52:52.513604Z",
   "status": "PASS",
   "temporary_copy_removed_after_validation": true,
-  "test_count": 213,
+  "test_count": 214,
   "validation_kind": "STANDALONE_COPY_WITHOUT_PARENT_REPOSITORY",
   "verification": {
     "archive_member_count": 18,

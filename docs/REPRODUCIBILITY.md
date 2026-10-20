@@ -8,7 +8,7 @@ python3 reproduce.py verify
 python3 reproduce.py smoke
 ```
 
-`tests` runs the original tests plus seven archive/comparison/configuration safety tests and checks Baseline, Hot/Cold, lifetime, development, and final CLI help. The production final experiment is not invoked by that action. `verify` checks 36 simulator file hashes, ZIP CRC, all 18 archived member hashes, the frozen selection hash referenced by the final manifest, and 8 file/tag references in [FROZEN_SOURCE_SHA256.json](../FROZEN_SOURCE_SHA256.json). A byte match is evidence of preservation, not an independent proof that the original experiment was correct.
+`tests` runs the original tests plus eight archive/comparison/configuration safety tests and checks Baseline, Hot/Cold, lifetime, development, and final CLI help. The production final experiment is not invoked by that action. `verify` checks 36 simulator file hashes, ZIP CRC, all 18 archived member hashes, the frozen selection hash referenced by the final manifest, and 8 file/tag references in [FROZEN_SOURCE_SHA256.json](../FROZEN_SOURCE_SHA256.json). A byte match is evidence of preservation, not an independent proof that the original experiment was correct.
 
 `smoke` runs the original v1 calibration/measurement CLI with a small **NEW_SMOKE** configuration: calibration seed 901, measurement seed 902, 3,000 writes, 256 logical pages, hint seed 42, and the explicit grids in [configs/smoke.json](../configs/smoke.json). This is a new experiment; its calibration is not the frozen 451-write boundary and its results are not substituted for the historical v2 study. It does not execute final seeds 301–305 or bypass a provenance guard.
 
@@ -38,7 +38,7 @@ See [rebuild_validation.json](../results/manifests/rebuild_validation.json) for 
 | Evidence | Verification level |
 |---|---|
 | Original tests | 206 passed before reproduction safety checks |
-| Tests with safety checks | 213 passed; algorithm source unchanged |
+| Tests with safety checks | 214 passed; algorithm source unchanged |
 | Frozen source and archived results | Hash/CRC and selection consistency checked |
 | Final v2 study | Historical production replay PASS: 220 run rows, 6,790 detector block rows, 70 condition rows, 5 seed summaries and final summary JSON match archived bytes |
 | New 901/902-seed smoke | Executed separately; not a portfolio performance result |

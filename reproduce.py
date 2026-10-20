@@ -223,13 +223,38 @@ def inspect_latency_log(path):
             'minimum_latency_minus_service_us': minimum_gap, 'request_log_sha256': digest(path)}
 
 
+def compare_hotcold_output(archive, device_out, device):
+    original = f'results/alibaba_compare_device_{device}_t8/comparison_manifest.json'
+    expected = json.loads(archive.read(original))
+    observed = load_json(device_out / 'comparison_manifest.json')
+    metric_sets = ('baseline', 'hot_cold', 'hot_cold_policy')
+    differences = compare_metrics({k: expected[k] for k in metric_sets}, {k: observed[k] for k in metric_sets})
+    result = {'device_id': device, 'status': 'PASS', 'original_manifest_member': original,
+              'original_manifest_sha256': hashlib.sha256(archive.read(original)).hexdigest(),
+              'replay_manifest_sha256': digest(device_out / 'comparison_manifest.json'),
+              'metric_count': len(expected['baseline']) + len(expected['hot_cold']),
+              'differences': differences, 'metrics': {k: observed[k] for k in metric_sets},
+              'phase_configuration_checks': {}}
+    for policy in ('baseline', 'hot_cold'):
+        member = f'results/alibaba_compare_device_{device}_t8/{policy}/experiment_manifest.json'
+        frozen_run = json.loads(archive.read(member))
+        replay_run = load_json(device_out / policy / 'experiment_manifest.json')
+        fields = ('ssd_config', 'parameters', 'phase_plan', 'phase_results', 'trace_stats', 'latency_model')
+        errors = compare_metrics({k: frozen_run[k] for k in fields}, {k: replay_run[k] for k in fields}, policy)
+        if replay_run['input_trace']['sha256'] != frozen_run['input_trace']['sha256']:
+            errors.append({'metric': policy + '.input_trace.sha256', 'reason': 'trace checksum mismatch'})
+        result['phase_configuration_checks'][policy] = {'status': 'FAIL' if errors else 'PASS', 'compared_fields': list(fields) + ['input_trace.sha256'], 'differences': errors}
+        differences.extend(errors)
+    result['latency_diagnostics'] = {policy: inspect_latency_log(device_out / policy / 'request_latency.csv') for policy in ('baseline', 'hot_cold')}
+    result['status'] = 'FAIL' if differences else 'PASS'
+    return result
+
+
 def execute_replay(device_ids, out, record):
     config = load_json(ROOT / 'configs/alibaba_t8.json')
     record['evidence_class'] = 'HISTORICAL_REPLAY'
     record['experiment_config'] = config
     record['devices'] = []
-    # Only three allowlisted trace members are extracted, in a fresh temporary dir.
-    # Archive payloads never write to source/results or to historical artifacts.
     with tempfile.TemporaryDirectory(prefix='hotcold-replay-') as temporary:
         with zipfile.ZipFile(ROOT / 'results_archive.zip') as archive:
             for device in device_ids:
@@ -239,28 +264,53 @@ def execute_replay(device_ids, out, record):
                 device_out = out / f'device_{device}'
                 parameters.update({'input': str(trace), 'output_dir': str(device_out)})
                 run_command([sys.executable, '-m', 'simulator.run_compare_hot_cold', *cli_args(parameters)], out, record, f'replay-device-{device}')
-                original = f'results/alibaba_compare_device_{device}_t8/comparison_manifest.json'
-                expected = json.loads(archive.read(original))
-                observed = load_json(device_out / 'comparison_manifest.json')
-                metric_sets = ('baseline', 'hot_cold', 'hot_cold_policy')
-                differences = compare_metrics({k: expected[k] for k in metric_sets}, {k: observed[k] for k in metric_sets})
-                result = {'device_id': device, 'status': 'PASS' if not differences else 'FAIL', 'trace_sha256': digest(trace), 'trace_archive_member': member, 'original_manifest_member': original, 'original_manifest_sha256': hashlib.sha256(archive.read(original)).hexdigest(), 'replay_manifest_sha256': digest(device_out / 'comparison_manifest.json'), 'metric_count': len(expected['baseline']) + len(expected['hot_cold']), 'differences': differences, 'metrics': {k: observed[k] for k in metric_sets}}
-                result['phase_configuration_checks'] = {}
-                for policy in ('baseline', 'hot_cold'):
-                    historical_member = f'results/alibaba_compare_device_{device}_t8/{policy}/experiment_manifest.json'
-                    frozen_run = json.loads(archive.read(historical_member))
-                    replay_run = load_json(device_out / policy / 'experiment_manifest.json')
-                    fields = ('ssd_config', 'parameters', 'phase_plan', 'phase_results', 'trace_stats', 'latency_model')
-                    phase_errors = compare_metrics({k: frozen_run[k] for k in fields}, {k: replay_run[k] for k in fields}, policy)
-                    result['phase_configuration_checks'][policy] = {'status': 'FAIL' if phase_errors else 'PASS', 'compared_fields': list(fields), 'differences': phase_errors}
-                    differences.extend(phase_errors)
-                result['status'] = 'FAIL' if differences else 'PASS'
-                result['latency_diagnostics'] = {policy: inspect_latency_log(device_out / policy / 'request_latency.csv') for policy in ('baseline', 'hot_cold')}
+                result = compare_hotcold_output(archive, device_out, device)
+                result.update({'trace_sha256': digest(trace), 'trace_archive_member': member})
                 record['devices'].append(result)
                 write_json(out / 'replay_comparison.json', record['devices'])
-                if differences:
-                    raise RuntimeError(f'Historical numeric mismatch for device {device}')
+                if result['status'] != 'PASS':
+                    raise RuntimeError(f'Historical numeric/configuration mismatch for device {device}')
     record['blocked'] = [{'dataset': 'MSR prxy_1 100k', 'status': 'BLOCKED', 'reason': 'Input trace is absent from results_archive.zip. Summary/manifest evidence is preserved; no replay claimed.'}]
+
+
+def finalize_existing_run(run_dir, out, record, report_path=None):
+    """Validate completed outputs only. This function never launches a simulator."""
+    run_dir = Path(run_dir).expanduser().resolve()
+    prior_path = run_dir / 'run_manifest.json'
+    prior = load_json(prior_path)
+    if prior.get('project') != 'online_hotcold_ftl' or prior.get('action') != 'replay':
+        raise ValueError('existing run must be a Hot/Cold historical replay')
+    if prior.get('status') != 'PASS':
+        raise ValueError('existing replay has not finished successfully; keep the live process running and inspect its manifest first')
+    if prior['source_sha256'] != record['actual_source_sha256']:
+        raise ValueError('existing replay source differs from the preserved current simulator')
+    devices = [row['device_id'] for row in prior['devices']]
+    if not devices or len(devices) != len(set(devices)) or set(devices) - {4, 49, 740}:
+        raise ValueError('existing replay has an invalid device list')
+    record.update({'evidence_class': 'HISTORICAL_REPLAY_VALIDATION', 'simulation_executed': False,
+                   'source_run_manifest_sha256': digest(prior_path), 'existing_run_dir': str(run_dir), 'devices': []})
+    with zipfile.ZipFile(ROOT / 'results_archive.zip') as archive:
+        for device in devices:
+            record['devices'].append(compare_hotcold_output(archive, run_dir / f'device_{device}', device))
+    if any(row['status'] != 'PASS' for row in record['devices']):
+        raise RuntimeError('existing replay validation found a metric/configuration mismatch')
+    result = {'schema_version': 1, 'project': 'online_hotcold_ftl', 'status': 'PASS',
+              'evidence_class': record['evidence_class'], 'simulation_executed': False,
+              'validated_at_utc': utc_now(), 'source_run_manifest_sha256': digest(prior_path),
+              'existing_run_dir': str(run_dir), 'runner_sha256': digest(Path(__file__)),
+              'archive_sha256': record['verification']['archive_sha256'],
+              'source_sha256': record['actual_source_sha256'], 'devices': record['devices'],
+              'blocked': [{'dataset': 'MSR prxy_1 100k', 'status': 'BLOCKED', 'reason': 'Input extract absent.'}]}
+    write_json(out / 'existing_run_validation.json', result)
+    if report_path is not None:
+        target = (ROOT / report_path).resolve()
+        allowed = (ROOT / 'results/manifests').resolve()
+        if target.parent != allowed or not target.name.startswith('rebuild_') or target.suffix != '.json':
+            raise ValueError('--report must be a new results/manifests/rebuild_*.json file')
+        target.parent.mkdir(parents=True, exist_ok=True)
+        with target.open('x', encoding='utf-8') as stream:
+            stream.write(json.dumps(result, indent=2, sort_keys=True) + '\n')
+        record['report'] = str(target)
 
 
 def compare_csv_bytes(expected, actual):
@@ -346,11 +396,15 @@ def execute_historical_final(checkout, out, record):
 
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('action', choices=('tests', 'verify', 'smoke', 'replay'))
+    parser.add_argument('action', choices=('tests', 'verify', 'smoke', 'replay', 'finalize'))
     parser.add_argument('--device', choices=('all', '4', '49', '740'), default='all', help='Hot/Cold replay only')
     parser.add_argument('--history-checkout', type=Path, help='Host-Hint historical replay: clean original Git checkout with frozen tags')
+    parser.add_argument('--run-dir', type=Path, help='finalize only: completed existing Hot/Cold replay directory')
+    parser.add_argument('--report', type=Path, help='finalize only: create a new results/manifests/rebuild_*.json snapshot')
     args = parser.parse_args(argv)
     reference = load_json(ROOT / 'configs/evidence_snapshot.json')
+    if args.action == 'finalize' and (reference['project'] != 'online_hotcold_ftl' or not args.run_dir):
+        parser.error('finalize requires a Hot/Cold project and --run-dir; it never launches a simulation.')
     if args.action == 'replay' and reference['project'] == 'host_hint_safe_fallback' and not args.history_checkout:
         parser.error('Host-Hint replay requires --history-checkout with separately restored original Git history; see docs/REPRODUCIBILITY.md. Production guard remains unchanged.')
     out = ROOT / 'artifacts/runs' / (datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ') + '-' + args.action + '-' + uuid.uuid4().hex[:8])
@@ -371,6 +425,8 @@ def main(argv=None):
                 run_command([sys.executable, '-m', module, '--help'], out, record, 'help-' + module.rsplit('.', 1)[-1])
         elif args.action == 'smoke':
             execute_smoke(reference, out, record)
+        elif args.action == 'finalize':
+            finalize_existing_run(args.run_dir, out, record, args.report)
         elif args.action == 'replay':
             if reference['project'] == 'host_hint_safe_fallback':
                 execute_historical_final(args.history_checkout, out, record)
