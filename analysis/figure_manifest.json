@@ -1,0 +1,126 @@
+{
+  "generator": {
+    "matplotlib": "3.9.4",
+    "python": "3.12.14"
+  },
+  "historical_config": {
+    "error_rates": [
+      0.0,
+      0.05,
+      0.1,
+      0.15,
+      0.2,
+      0.25,
+      0.3,
+      0.35,
+      0.4,
+      0.45,
+      0.5,
+      0.6,
+      0.8,
+      1.0
+    ],
+    "logical_pages": 2048,
+    "selected_block_size": 512,
+    "selected_persistence_k": 2,
+    "ssd_config": {
+      "actual_overprovision_ratio": 0.2,
+      "blocks_per_chip": 10,
+      "capacity_basis": "controlled-synthetic-working-set",
+      "chips": 4,
+      "gc_reserve_pages": 128,
+      "gc_threshold_pages": 128,
+      "gc_threshold_ratio": 0.05,
+      "logical_pages": 2048,
+      "page_size": 4096,
+      "pages_per_block": 64,
+      "reserved_gc_blocks": 2,
+      "target_overprovision_ratio": 0.2,
+      "total_blocks": 40,
+      "total_bytes": 10485760,
+      "total_pages": 2560
+    },
+    "stage": "final",
+    "total_writes": 50000,
+    "workload_seeds": [
+      301,
+      302,
+      303,
+      304,
+      305
+    ]
+  },
+  "historical_final_verdict": "FINAL_SUPPORT",
+  "historical_git_commit": "c27b72ae76766a05b6c83de89907ffb00bdf1e71",
+  "historical_protocol_commit": "72eb2b472ac9a7b385bca47b106d58ba6d909d53",
+  "historical_selection_commit": "f4fc53f951abf0ad9f9451171a0ac4fb06fc76ea",
+  "metric_definition": "WAF = total NAND page writes / total host page writes over the complete 50k-write run (no warm-up excluded); wear CV = population SD(block erase counts)/mean(block erase counts)",
+  "notes": [
+    "Binary label-inversion symmetry holds for every final seed at 0% versus 100% error.",
+    "Offline hint/lifetime phi uses oracle true-class labels for interpretation only; the online policy observes resolved lifetimes.",
+    "Original final outputs remain untouched. No new experiment or threshold selection was performed."
+  ],
+  "script_sha256": "1e7541afa0979c6807a5a4efa6e32a83b599c26e28e2387112123b3b6a141e91",
+  "seed_summaries": [
+    {
+      "beneficial_n": 9,
+      "harmful_n": 5,
+      "seed": 301,
+      "v1_false_n": 3,
+      "v1_false_rate": 0.3333333333333333,
+      "v2_false_n": 0,
+      "v2_false_rate": 0.0
+    },
+    {
+      "beneficial_n": 10,
+      "harmful_n": 4,
+      "seed": 302,
+      "v1_false_n": 7,
+      "v1_false_rate": 0.7,
+      "v2_false_n": 1,
+      "v2_false_rate": 0.1
+    },
+    {
+      "beneficial_n": 10,
+      "harmful_n": 4,
+      "seed": 303,
+      "v1_false_n": 2,
+      "v1_false_rate": 0.2,
+      "v2_false_n": 1,
+      "v2_false_rate": 0.1
+    },
+    {
+      "beneficial_n": 10,
+      "harmful_n": 4,
+      "seed": 304,
+      "v1_false_n": 2,
+      "v1_false_rate": 0.2,
+      "v2_false_n": 1,
+      "v2_false_rate": 0.1
+    },
+    {
+      "beneficial_n": 10,
+      "harmful_n": 4,
+      "seed": 305,
+      "v1_false_n": 3,
+      "v1_false_rate": 0.3,
+      "v2_false_n": 1,
+      "v2_false_rate": 0.1
+    }
+  ],
+  "source_sha256": {
+    "results/final_summary/final_condition_outcomes.csv": "184f569a2571efa40c9d62782ed8e31e92bb827fad21bf1e13b9a9418c5e4add",
+    "results/final_summary/final_seed_summaries.csv": "c100a3df3ea1c351a121af218aa77f07956b322dad6460a5e08123033cfe2f87",
+    "results/final_summary/final_tradeoff_summary.csv": "7baee9704765f3439be28b74f8246b2e529df78e13e0daf399b81b9830c8011f",
+    "results/final_summary/final_waf_summary.csv": "55677ad0e330e4311f1a76925512e4168cb8fca4aae86836ed1c9c6f502d1007",
+    "results_archive.zip": "80fc2001c4744fd26c48ee6f75267a13f5a88d63129c5d0add9af7162a037838",
+    "results_archive.zip::results/safe_fallback_v2_development_20260820/frozen_v2_selection.json": "174bff65e305f1b78956bfa4b829a4e8f8876a55673a82229e9110653306d27d",
+    "results_archive.zip::results/safe_fallback_v2_final_20260820/final_condition_outcomes.csv": "184f569a2571efa40c9d62782ed8e31e92bb827fad21bf1e13b9a9418c5e4add",
+    "results_archive.zip::results/safe_fallback_v2_final_20260820/final_manifest.json": "1f3f8251529cc7984298fcf0facf67cac9060058bc7f779a201b000a8750f8c0",
+    "results_archive.zip::results/safe_fallback_v2_final_20260820/final_run_results.csv": "c2693bd2c138fd69a5fe9df8d15691aa8452f7177984a40df4867835c04b08d8",
+    "results_archive.zip::results/safe_fallback_v2_final_20260820/final_seed_summaries.csv": "c100a3df3ea1c351a121af218aa77f07956b322dad6460a5e08123033cfe2f87",
+    "results_archive.zip::results/safe_fallback_v2_final_20260820/final_summary.json": "3c07df67c07f6b633d8991a9c941610b227085c69489e34280039f2fd19b0719"
+  },
+  "status": "historical-final-holdout-validated-and-replotted; simulator-not-rerun; no-final-retuning",
+  "uncertainty": "5 workload seeds; descriptive min/median/max at each error rate. Within-seed error rates are repeated conditions, not independent samples. No confidence intervals or significance claims."
+}

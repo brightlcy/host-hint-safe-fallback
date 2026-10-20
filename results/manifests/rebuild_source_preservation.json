@@ -1,0 +1,13 @@
+{
+  "all_member_hashes_match_original_upload_copy_records": true,
+  "all_simulator_hashes_match_original_upload_copy_records": true,
+  "archive_member_count": 18,
+  "archive_sha256": "80fc2001c4744fd26c48ee6f75267a13f5a88d63129c5d0add9af7162a037838",
+  "evidence_class": "PRESERVATION_AUDIT",
+  "note": "Compared exported archive members with preservation upload records; this verifies copying, not the scientific validity or license of the underlying research data.",
+  "reference_commit": "73664fb0f7fea91260ba0d17fd8a36978c402a0a",
+  "schema_version": 1,
+  "source_file_count": 36,
+  "source_upload_manifest_sha256": "939cc93485e00d65269cc6cc21b3a2d750288ff69b194171a1c6f1692b890c0c",
+  "status": "PASS"
+}

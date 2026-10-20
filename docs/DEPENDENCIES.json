@@ -1,0 +1,126 @@
+{
+  "__init__": [],
+  "address": [
+    "config"
+  ],
+  "alibaba_ebs_2026": [
+    "alibaba_trace"
+  ],
+  "alibaba_ebs_metadata": [],
+  "alibaba_streaming": [
+    "alibaba_trace"
+  ],
+  "alibaba_trace": [],
+  "alibaba_workload": [
+    "alibaba_trace"
+  ],
+  "baseline_ftl": [
+    "config",
+    "gc_policy",
+    "metadata",
+    "trace_io"
+  ],
+  "config": [],
+  "experiment_runner": [
+    "baseline_ftl",
+    "config",
+    "latency_attribution",
+    "latency_model",
+    "trace_io"
+  ],
+  "gc_policy": [
+    "metadata"
+  ],
+  "hot_cold_experiment": [
+    "experiment_runner",
+    "hot_cold_ftl",
+    "latency_attribution",
+    "latency_model",
+    "trace_io",
+    "config"
+  ],
+  "hot_cold_ftl": [
+    "address",
+    "baseline_ftl",
+    "config",
+    "metadata"
+  ],
+  "latency_attribution": [
+    "latency_model"
+  ],
+  "latency_model": [
+    "baseline_ftl",
+    "trace_io"
+  ],
+  "lifetime_experiment": [
+    "baseline_ftl",
+    "config",
+    "lifetime_ftl",
+    "lifetime_workload"
+  ],
+  "lifetime_ftl": [
+    "address",
+    "baseline_ftl",
+    "config",
+    "lifetime_tracker",
+    "persistence_detector",
+    "lifetime_workload",
+    "metadata"
+  ],
+  "lifetime_tracker": [
+    "lifetime_workload"
+  ],
+  "lifetime_workload": [],
+  "metadata": [
+    "address",
+    "config"
+  ],
+  "persistence_detector": [
+    "lifetime_tracker",
+    "lifetime_workload"
+  ],
+  "persistence_protocol": [],
+  "run_analyze_alibaba": [
+    "alibaba_workload"
+  ],
+  "run_baseline": [],
+  "run_compare_hot_cold": [],
+  "run_convert_alibaba": [
+    "alibaba_trace"
+  ],
+  "run_convert_alibaba_ebs": [
+    "alibaba_ebs_2026"
+  ],
+  "run_extract_alibaba_devices": [
+    "alibaba_streaming"
+  ],
+  "run_hot_cold": [],
+  "run_lifetime_experiment": [
+    "lifetime_experiment"
+  ],
+  "run_persistence_development": [
+    "lifetime_experiment",
+    "lifetime_ftl",
+    "lifetime_workload",
+    "baseline_ftl",
+    "persistence_protocol"
+  ],
+  "run_persistence_final": [
+    "baseline_ftl",
+    "lifetime_experiment",
+    "lifetime_ftl",
+    "lifetime_workload",
+    "persistence_protocol"
+  ],
+  "run_profile_workload": [],
+  "run_select_alibaba_ebs": [
+    "alibaba_ebs_metadata"
+  ],
+  "trace_io": [
+    "config"
+  ],
+  "workload_profile": [
+    "latency_model",
+    "trace_io"
+  ]
+}

@@ -1,0 +1,447 @@
+{
+  "import_parent_commit": "73664fb0f7fea91260ba0d17fd8a36978c402a0a",
+  "original_portfolio_url": "https://github.com/brightlcy/ssd-ftl-research-portfolio",
+  "note": "Local export commit; it is not a commit in the remote portfolio history. Original algorithm/result bytes preserved. README replaced; historical README retained in docs/legacy.",
+  "files": [
+    {
+      "path": "FINAL_REPORT.md",
+      "sha256": "cad484e59c8ef21f868f239c3f92e88879f6b685c8259f86c3d350b7b56f62da",
+      "size_bytes": 6558
+    },
+    {
+      "path": "FROZEN_SOURCE_SHA256.json",
+      "sha256": "750cee009dae28af9d0495a74ff140d29cd9b0be90e9b3830b39d01b9e5ab037",
+      "size_bytes": 1125
+    },
+    {
+      "path": "INHERITED_HOTCOLD_README.md",
+      "sha256": "24adc52d1a7167e234ce9097a85a2a700a7ae130af1107060d80206396c4b891",
+      "size_bytes": 8550
+    },
+    {
+      "path": "PROJECT_STATUS.md",
+      "sha256": "567349348d50f2ace7ad6feb40c0d258e819c3d9e4171995cc78f2371b4a9338",
+      "size_bytes": 537
+    },
+    {
+      "path": "README.md",
+      "sha256": "62f3a007d854e47eff6103d23f4ce30cc0fcfedc7705c5ff66754726a1882f20",
+      "size_bytes": 2716
+    },
+    {
+      "path": "requirements.txt",
+      "sha256": "4139f538efe35d2e4321c03b135d4ec96d505951e97566fb4aa9b7abad560453",
+      "size_bytes": 86
+    },
+    {
+      "path": "results/final_summary/final_condition_outcomes.csv",
+      "sha256": "184f569a2571efa40c9d62782ed8e31e92bb827fad21bf1e13b9a9418c5e4add",
+      "size_bytes": 14610
+    },
+    {
+      "path": "results/final_summary/final_false_fallback_summary.csv",
+      "sha256": "928afb43cd48752401abf2322fe0bdec9929ff84d6fc19c334ddc31fbb96fb29",
+      "size_bytes": 301
+    },
+    {
+      "path": "results/final_summary/final_harmful_region_summary.csv",
+      "sha256": "88690f2b64c406ee152783e4682f636a49a9811f893dae940b1e792c76af1f3b",
+      "size_bytes": 496
+    },
+    {
+      "path": "results/final_summary/final_seed_summaries.csv",
+      "sha256": "c100a3df3ea1c351a121af218aa77f07956b322dad6460a5e08123033cfe2f87",
+      "size_bytes": 421
+    },
+    {
+      "path": "results/final_summary/final_summary.json",
+      "sha256": "3c07df67c07f6b633d8991a9c941610b227085c69489e34280039f2fd19b0719",
+      "size_bytes": 2457
+    },
+    {
+      "path": "results/final_summary/final_tradeoff_summary.csv",
+      "sha256": "7baee9704765f3439be28b74f8246b2e529df78e13e0daf399b81b9830c8011f",
+      "size_bytes": 1680
+    },
+    {
+      "path": "results/final_summary/final_waf_summary.csv",
+      "sha256": "55677ad0e330e4311f1a76925512e4168cb8fca4aae86836ed1c9c6f502d1007",
+      "size_bytes": 1954
+    },
+    {
+      "path": "results_archive.zip",
+      "sha256": "80fc2001c4744fd26c48ee6f75267a13f5a88d63129c5d0add9af7162a037838",
+      "size_bytes": 3033298
+    },
+    {
+      "path": "samples/alibaba_device_size_sample.csv",
+      "sha256": "c8699f72e038e66bccdca991eb3dfec36b47a5ebadbeab23a1679399b2b38eaf",
+      "size_bytes": 49
+    },
+    {
+      "path": "samples/alibaba_ebs_2026_sample.csv",
+      "sha256": "3f2500a30d73d1a39d32fe7163def8da157c1f5f4234f1e0f29bdd671f6fb49b",
+      "size_bytes": 152
+    },
+    {
+      "path": "samples/alibaba_ebs_metadata_sample.csv",
+      "sha256": "4fa0215b88b9df762ddca95d01720c05494434d4623e85bf1a9298d6207c98e6",
+      "size_bytes": 170
+    },
+    {
+      "path": "samples/alibaba_io_sample.csv",
+      "sha256": "4a423e6995596cd9f5708129a940508a1a7d7cbfcd0b475fb827cd187b1592aa",
+      "size_bytes": 160
+    },
+    {
+      "path": "samples/sample.standard.csv",
+      "sha256": "c2d8a7b8ab2df1361b2c28a9f31b9b4f43ec8a894dcf13fc2a9f421eb3b0983c",
+      "size_bytes": 85
+    },
+    {
+      "path": "simulator/__init__.py",
+      "sha256": "2ffa360901c102ae55c32e6a514ab97a5644b2409ad2128a5c188a46075adb3f",
+      "size_bytes": 42
+    },
+    {
+      "path": "simulator/address.py",
+      "sha256": "d3cf5273ba6b113a1f233fb8553c8e7a69d8b248334fb208befbd6f1a45a8ce6",
+      "size_bytes": 2571
+    },
+    {
+      "path": "simulator/alibaba_ebs_2026.py",
+      "sha256": "93a89bd9170661b5fd9ed39718c2364427a562bc6f0362d4a5433f9eae267af8",
+      "size_bytes": 16418
+    },
+    {
+      "path": "simulator/alibaba_ebs_metadata.py",
+      "sha256": "207f3dbdab1814500556d0f63a02bf5ac05d695c673b4b6e075298ebe9146b21",
+      "size_bytes": 11697
+    },
+    {
+      "path": "simulator/alibaba_streaming.py",
+      "sha256": "519c230257fe4d49ea1ef941fcf80810cc3e6fdaa4905e269b76b942e1341c96",
+      "size_bytes": 10651
+    },
+    {
+      "path": "simulator/alibaba_trace.py",
+      "sha256": "a098490890fc2edc72a71948c966bc248b68e4f657cbc6a193aaa1a99f224020",
+      "size_bytes": 20578
+    },
+    {
+      "path": "simulator/alibaba_workload.py",
+      "sha256": "12a1d53f8e12298ef26476033d79ce95c87fdfdef58f39214fb2ae0f8cb5d25d",
+      "size_bytes": 20791
+    },
+    {
+      "path": "simulator/baseline_ftl.py",
+      "sha256": "0906212026abd3e0a78252bffb6bd54ace38084bdeb0e5bd3d99f90693b3eea8",
+      "size_bytes": 18321
+    },
+    {
+      "path": "simulator/config.py",
+      "sha256": "4d671e9f5bcbe1ff4b4b7fc7ba10e335ea9df5e087ff043c14d360cf8846b8fe",
+      "size_bytes": 6090
+    },
+    {
+      "path": "simulator/experiment_runner.py",
+      "sha256": "44426e06286a36078d5fc9c0ea7e2199427215a43adacc7837f27ec93670bd30",
+      "size_bytes": 12337
+    },
+    {
+      "path": "simulator/gc_policy.py",
+      "sha256": "797518975fbb786181c51b064a84bb0c1604cb69cbd963b66bca9893db27dc94",
+      "size_bytes": 5211
+    },
+    {
+      "path": "simulator/hot_cold_experiment.py",
+      "sha256": "0b886c19c700c05c9736e45d0782ea0a8c470e32f636dcab0f89450fa7c9cc34",
+      "size_bytes": 11230
+    },
+    {
+      "path": "simulator/hot_cold_ftl.py",
+      "sha256": "90e5af5b140333dfa27215eebc8ec614234e737ade22eaa445db7ae0cef76655",
+      "size_bytes": 13739
+    },
+    {
+      "path": "simulator/latency_attribution.py",
+      "sha256": "d8619d4442c0689fd08f3ee9cbb352ee4818cd05ba24229d05dfb866c794440f",
+      "size_bytes": 11466
+    },
+    {
+      "path": "simulator/latency_model.py",
+      "sha256": "011a7c6cc96d340429bcdcd952aba21875bffa9316f6bfc6e9c5dca06c616aff",
+      "size_bytes": 14944
+    },
+    {
+      "path": "simulator/lifetime_experiment.py",
+      "sha256": "680dbd7148ab0d7ac14b7fa167d00368e471f4a59f629f581135340ba0053f6b",
+      "size_bytes": 22498
+    },
+    {
+      "path": "simulator/lifetime_ftl.py",
+      "sha256": "f3bfe4f56ff9581d7aba4d41ac1dcfee87b9c9bfcf019f66d2d2b2597d959b54",
+      "size_bytes": 19142
+    },
+    {
+      "path": "simulator/lifetime_tracker.py",
+      "sha256": "9ee3cb32383ca21c7886fea90f12403734a51393d45eba8272838890ea145db1",
+      "size_bytes": 15099
+    },
+    {
+      "path": "simulator/lifetime_workload.py",
+      "sha256": "042b22abb58e07f5b5cc9880f13a2bd7a967b2db7d2f3b6a6ff8870daeeecd55",
+      "size_bytes": 11161
+    },
+    {
+      "path": "simulator/metadata.py",
+      "sha256": "dc30c74d59d9a5eb5e5bfd1ca3aa187cba769d8c99ee3f5230f87862f6f4f916",
+      "size_bytes": 15309
+    },
+    {
+      "path": "simulator/persistence_detector.py",
+      "sha256": "5ea37b4f53eeeda17dfd183da17026082bbee3fe8ed2031cb35db2df23f4af08",
+      "size_bytes": 10592
+    },
+    {
+      "path": "simulator/persistence_protocol.py",
+      "sha256": "07b77cdbd5cfa3299fe280595153fcc0b03e59c6db6f217fb4287729fb5afc27",
+      "size_bytes": 15412
+    },
+    {
+      "path": "simulator/run_analyze_alibaba.py",
+      "sha256": "f59bc1d45d7a52d728707d3720becd7fdb8bd7ff035c46b991b627930c750366",
+      "size_bytes": 4561
+    },
+    {
+      "path": "simulator/run_baseline.py",
+      "sha256": "1ec45b6684b590099d20e9cc4e7b8583f130e6d2a6ab5861bc5dcc7ed00950d5",
+      "size_bytes": 8827
+    },
+    {
+      "path": "simulator/run_compare_hot_cold.py",
+      "sha256": "6ac743f23318bfe37a9b86d75846a1cede69b8046f054d72320f3aff1e7a2811",
+      "size_bytes": 6598
+    },
+    {
+      "path": "simulator/run_convert_alibaba.py",
+      "sha256": "d4e85e94bed7f88e2bb54aab440e7db429d5106b87fdd625dc5454b3417e99c0",
+      "size_bytes": 3493
+    },
+    {
+      "path": "simulator/run_convert_alibaba_ebs.py",
+      "sha256": "bfc65e230785d2dce0699898d02b97a0768ddba1c140aa8c2ee12a96708e3129",
+      "size_bytes": 2870
+    },
+    {
+      "path": "simulator/run_extract_alibaba_devices.py",
+      "sha256": "ad6e651f01c1efc73e69ef4683f1f7a887d0449745491bb902b2028b6bee3280",
+      "size_bytes": 2733
+    },
+    {
+      "path": "simulator/run_hot_cold.py",
+      "sha256": "9fbf890c742775028be5815bf667c123eea13f1ada9b27b45d7d2b4295528303",
+      "size_bytes": 4662
+    },
+    {
+      "path": "simulator/run_lifetime_experiment.py",
+      "sha256": "09d1f423971267078a206bb2d7a53dd46570529877b03dacdf9b23d5352609f5",
+      "size_bytes": 8881
+    },
+    {
+      "path": "simulator/run_persistence_development.py",
+      "sha256": "a9f40aa535a93a74e11c5389638f681f766a633ab1724876cfa9850fa05dafbe",
+      "size_bytes": 19212
+    },
+    {
+      "path": "simulator/run_persistence_final.py",
+      "sha256": "25a91cd44128fa237f03e01ea7d864b288f57acdfa5022b888228c72557fe177",
+      "size_bytes": 23021
+    },
+    {
+      "path": "simulator/run_profile_workload.py",
+      "sha256": "a8a82989f527ed942e6072f75549549c91508c8f611eb76bb743431d563f448a",
+      "size_bytes": 3005
+    },
+    {
+      "path": "simulator/run_select_alibaba_ebs.py",
+      "sha256": "2e49dda3c975db08a25f4120916778019eb3c2379dfd63208eb995019c41064c",
+      "size_bytes": 2230
+    },
+    {
+      "path": "simulator/trace_io.py",
+      "sha256": "0d67939e91e84c9f6c2bd779f1e73c92b2b0deaa4ed7d77cb69ebfcdb188e1fc",
+      "size_bytes": 15158
+    },
+    {
+      "path": "simulator/workload_profile.py",
+      "sha256": "7d181077d41f32d8efb0eed44335863fec6f5895df05fc049ce99f0ba39c2ffd",
+      "size_bytes": 15268
+    },
+    {
+      "path": "tests/test_alibaba_ebs_2026.py",
+      "sha256": "3d469bacf1f3f709047421342b646a45bd210b9c2dd5655e9a7539a8e72f39a1",
+      "size_bytes": 5947
+    },
+    {
+      "path": "tests/test_alibaba_ebs_metadata.py",
+      "sha256": "b340703bc63d788c0f998048383f66cb758664e6f5971ccdee06ed2257f226fa",
+      "size_bytes": 3430
+    },
+    {
+      "path": "tests/test_alibaba_progress_checkpoint.py",
+      "sha256": "5e9e5f88f1f4415d32d92b196089c62b224b9d878cfe10ed460c4260ec05903b",
+      "size_bytes": 3388
+    },
+    {
+      "path": "tests/test_alibaba_streaming.py",
+      "sha256": "c1fba64a831d065dc1e212dd07bb9782a909e1bf4a921a9dd8479d55feb98333",
+      "size_bytes": 2453
+    },
+    {
+      "path": "tests/test_alibaba_trace.py",
+      "sha256": "2a4d1a9544cbf7119b140f1d8aa76d6d16045e94d996dbea6baa610d90093c47",
+      "size_bytes": 9128
+    },
+    {
+      "path": "tests/test_alibaba_workload.py",
+      "sha256": "b3b994ecd2b27bb27be15b489b92741de33c07934882986b7ee6229c12cdcd3d",
+      "size_bytes": 4174
+    },
+    {
+      "path": "tests/test_baseline_ftl.py",
+      "sha256": "76c928b431ed1f1237cde9676492cd15c11f6c14fca7b1713bce5322913ae4ea",
+      "size_bytes": 9024
+    },
+    {
+      "path": "tests/test_config_address.py",
+      "sha256": "5d3107871e8c816439211af6b1cfabe06b5b340aad4cc7b953ae57f2d4d4c0f2",
+      "size_bytes": 2242
+    },
+    {
+      "path": "tests/test_experiment_runner.py",
+      "sha256": "6b6b0489b5d936b1d909c69455acf039d090dcfc611b628f745065c66db3f9a7",
+      "size_bytes": 6251
+    },
+    {
+      "path": "tests/test_gc_policy.py",
+      "sha256": "75dc9e1242e9c953fafe04d91d0cc720013295fa1f28b2ad6847842ea2c5aa1e",
+      "size_bytes": 5112
+    },
+    {
+      "path": "tests/test_hot_cold_experiment.py",
+      "sha256": "d99e418397026e9d959601334e6dcc8b27d508f611725726418b565fce5b1175",
+      "size_bytes": 2523
+    },
+    {
+      "path": "tests/test_hot_cold_ftl.py",
+      "sha256": "bd7edf4097ff31e8d25c56ece6f20636336658e540a62fd7ab7b5c9138dc0777",
+      "size_bytes": 3507
+    },
+    {
+      "path": "tests/test_latency_attribution.py",
+      "sha256": "3e7af8783132d7b70247dd7c9103e7c7b775ba1860770542fdd170b86cd17b2a",
+      "size_bytes": 4444
+    },
+    {
+      "path": "tests/test_latency_model.py",
+      "sha256": "ec65fb300d645728cca505c92b87c97269c2fec600d4aa9212a2e09db16114ca",
+      "size_bytes": 6412
+    },
+    {
+      "path": "tests/test_lifetime_experiment.py",
+      "sha256": "51cd197c6b949a434f04ae9d0f6414a9516cb642dc24ff872720fb23207ad3af",
+      "size_bytes": 8204
+    },
+    {
+      "path": "tests/test_lifetime_ftl.py",
+      "sha256": "f029b508bc805e25c8a4402de76a7abdf7f76d7365c4e428e98afef95f7b4469",
+      "size_bytes": 8162
+    },
+    {
+      "path": "tests/test_lifetime_tracker.py",
+      "sha256": "534f6133ccb0ca62ca28d17e578a6919d4f6cba004cd07b1c33a364c26232f49",
+      "size_bytes": 9186
+    },
+    {
+      "path": "tests/test_lifetime_workload.py",
+      "sha256": "a1ea461c87e59842a6b590f62aad58de1bcf595a9ea8044809c86a61dde692fa",
+      "size_bytes": 3658
+    },
+    {
+      "path": "tests/test_metadata.py",
+      "sha256": "8576f2829e04ae4a7ec01a8cfe64e325015b6324c2d3f82536e5c88cad48af36",
+      "size_bytes": 6428
+    },
+    {
+      "path": "tests/test_persistence_detector.py",
+      "sha256": "4986b6321e358688a59073875e6de2bfcbda0baaa28d35dc4fe63b636be934d3",
+      "size_bytes": 8813
+    },
+    {
+      "path": "tests/test_persistence_protocol.py",
+      "sha256": "47d37ee20e06d051368fbb03a6f1eb66afdcf80c1612fd4ed63b08a813a5a0a7",
+      "size_bytes": 13836
+    },
+    {
+      "path": "tests/test_result_io.py",
+      "sha256": "6d563d875f312a48de4ed2119cb264fef61f90299408570c0094efc0811d6d9a",
+      "size_bytes": 2509
+    },
+    {
+      "path": "tests/test_run_alibaba_ebs_cli.py",
+      "sha256": "3d02a622afa40dcde94e41b16847e38284fef9f96a9e55a23d9b0305b229ec18",
+      "size_bytes": 2054
+    },
+    {
+      "path": "tests/test_run_analyze_alibaba.py",
+      "sha256": "f330a55c31eceff07e04208353d5a7ddb25438b6a65b1f0aa07b4285f1cd6667",
+      "size_bytes": 1483
+    },
+    {
+      "path": "tests/test_run_baseline.py",
+      "sha256": "a0fd596f7bc6a16766cbb75bec9ee3149cccb1c9f133d555df4c065c8eccf616",
+      "size_bytes": 4689
+    },
+    {
+      "path": "tests/test_run_convert_alibaba.py",
+      "sha256": "237cf6d770d39bfc11e2f5e28b23740217d12f8100fc6520ecb04a61f7667dc4",
+      "size_bytes": 1716
+    },
+    {
+      "path": "tests/test_run_lifetime_experiment.py",
+      "sha256": "07a51342dec2f05a63c6af5397235ae0b1bef369e2f7419c3240f751c95f02cd",
+      "size_bytes": 727
+    },
+    {
+      "path": "tests/test_run_persistence_development.py",
+      "sha256": "07ebd757ba95517fac0b5cc47d9d3f139d495c872044b92ae359d03d0739d03c",
+      "size_bytes": 11021
+    },
+    {
+      "path": "tests/test_run_persistence_final.py",
+      "sha256": "2c26c50341863edc648647793c5466fe4f7d60e165b640f9e5d5a8072afe61c4",
+      "size_bytes": 13722
+    },
+    {
+      "path": "tests/test_run_profile_workload.py",
+      "sha256": "097e242cb2f2775d358703c72d66c34a39eb3c5f27028989d09b86760cbc851d",
+      "size_bytes": 1037
+    },
+    {
+      "path": "tests/test_safe_fallback_v2_integrity.py",
+      "sha256": "9b12854defcc31955ec2885c1143eea99a29ca9825e057c4a57ab6460f37309a",
+      "size_bytes": 1675
+    },
+    {
+      "path": "tests/test_trace_io.py",
+      "sha256": "7c84c3a966b341cbc63d4ba88dc6fad42e875a64ed5c73a153792db10ed4d230",
+      "size_bytes": 5984
+    },
+    {
+      "path": "tests/test_workload_profile.py",
+      "sha256": "1252dc4a602faddbd9f5c35d851288a1ecd3e9c219e1ae27975d1dd1c0e79016",
+      "size_bytes": 3394
+    }
+  ]
+}

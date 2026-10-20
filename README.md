@@ -1,45 +1,63 @@
-# Host Hint / Safe Fallback 실험
+# Host Hint Safe Fallback
 
-불완전한 Host Hint를 계속 신뢰해도 되는지, 과거에 해결된 데이터 수명만으로
-위험 구간을 감지하고 fallback할 수 있는지 검증한 실험입니다.
+A controlled FTL study of when imperfect placement hints should stop being trusted.
 
-이 실험의 입력은 **controlled synthetic workload**입니다. Alibaba trace를
-입력으로 사용한 실험은 옆의 `../online_hotcold_ftl/`에 별도로 있습니다.
+**Observation:** in the archived final protocol, persistence-aware v2 reduced seed-equal beneficial false fallback **34.67% → 8.00%**. It timely detected **21/21 harmful conditions** and lowered WAF against Static in all 21, while **erase-count CV increased in all 21**.
 
-## 구현과 근거
+![Paired final-seed false fallback comparison](figures/rebuild_false_fallback.png)
 
-- `simulator/lifetime_ftl.py`: Device-only, Static Host-guided, v1 및 v2 정책
-- `simulator/lifetime_tracker.py`: 온라인으로 해결된 수명 관측
-- `simulator/persistence_detector.py`, `persistence_protocol.py`: persistence-aware v2
-- `simulator/run_lifetime_experiment.py`, `run_persistence_development.py`,
-  `run_persistence_final.py`: 실험 실행과 development/final 분리
-- `tests/`: 동작 및 frozen source 무결성 테스트
-- `FINAL_REPORT.md`: 최종 결과와 해석
-- `results/final_summary/`: 포트폴리오에 사용한 최종 요약표
-- `results_archive.zip`: core frozen, development, final의 원래 CSV/JSON 경로
-- `FROZEN_SOURCE_SHA256.json`: 원본 Git tag commit과 frozen source의 SHA-256
+*Synthetic, stationary 50k-write workloads; five final workload seeds. Seventy paired error-rate conditions are not seventy independent samples. This is a mechanism study, not real NVMe FDP, hardware latency or device-life evidence.*
+
+[Quick start](#quick-start) · [Methodology](docs/METHODOLOGY.md) · [Results and figures](docs/RESULTS.md) · [Reproducibility](docs/REPRODUCIBILITY.md) · [Limitations](docs/LIMITATIONS.md)
+
+## Quick start
+
+Python 3.14.6 is the rebuild's tested simulator runtime; only the standard library is required.
 
 ```sh
-python3 -m unittest discover -s tests -v
-python3 -m zipfile -e results_archive.zip .
-python3 -m simulator.run_lifetime_experiment --help
-python3 -m simulator.run_persistence_final --help
+python3 reproduce.py verify
+python3 reproduce.py tests
+python3 reproduce.py smoke
 ```
 
-이 export에서는 과거 Git tag를 요구하던 세 source-integrity 테스트를
-`FROZEN_SOURCE_SHA256.json`의 동일 파일 SHA-256 비교로 이식했습니다.
-알고리즘 코드와 production final runner의 Git provenance guard는 변경하지 않았습니다.
-development/final runner의 단위 테스트에서는 역사적 Git metadata를 test fixture로
-대체했습니다. fixture는 테스트 안에서만 적용되며 실제 연구 실행의 provenance가 아닙니다.
-따라서 원래 final holdout을 production 모드로 재실행하려면 별도로 보존한 원본
-저장소의 역사적 tags와 clean worktree가 필요합니다. 이 포트폴리오의 새 커밋을
-과거 연구 커밋인 것처럼 tag하지 않습니다. 이번 export는 기존 결과를 보존하며
-최종 실험을 다시 수행하거나 재튜닝하지 않았습니다.
+Run inside this repository. The smoke uses separate seeds and does not rerun or retune the final holdout. Production final requires the preserved original Git history and frozen selection; [reproducibility](docs/REPRODUCIBILITY.md) distinguishes that historical replay from a new untouched validation.
 
-Python 표준 라이브러리를 사용합니다. `INHERITED_HOTCOLD_README.md`와
-`PROJECT_STATUS.md`는 원본 소스에 포함되어 있던 이전 단계 기록이며, 현재 Host Hint
-연구의 설명은 이 README와 최상위 `docs/`, `FINAL_REPORT.md`를 기준으로 읽습니다.
+## Background and research question
 
-결과는 mechanism-level proof-of-concept입니다. 실제 NVMe FDP 구현이나
-실제 SSD latency 검증으로 해석하지 않습니다. WAF 이득과 wear imbalance의
-trade-off를 함께 봅니다.
+Host knowledge can improve placement, but a wrong label may destroy useful lifetime segregation. When does Static become worse than Device-only, and can the device detect persistent separation loss using already resolved past lifetimes?
+
+The first hypothesis—higher binary error always worsens WAF—failed. With symmetric placement groups, 100% SHORT/LONG inversion can preserve segregation by swapping the names. The revised detector observes label-invariant `|phi|` association, not semantic label accuracy.
+
+## Implementation and protocol
+
+Device-only classifies from resolved lifetimes. Static always trusts the host. v1 falls back on a rolling signal; v2 requires two consecutive BAD, non-overlapping 512-pair evidence blocks before switching to device-side placement. It does not migrate all existing data or claim a new lifetime predictor.
+
+| Frozen item | Value |
+|---|---|
+| Lifetime boundary | 451 host writes |
+| Association threshold | 0.29980003993028376 |
+| Min marginal support | 5 |
+| Detector | B=512, K=2 |
+| Splits | calibration 1–3; v1 held-out 101–105; development 201–205; final 301–305 |
+| Final workload | 50,000 writes, 2,048 logical pages, 14 corruption rates |
+
+B/K was selected on development and frozen before final. [Architecture](docs/ARCHITECTURE.md) · [Source map](docs/FILE_MAP.md) · [Historical final report](FINAL_REPORT.md) · [Frozen source hashes](FROZEN_SOURCE_SHA256.json)
+
+## Results and failure cases
+
+- Harmful: 21/21 timely detection and lower WAF than Static. Median relative WAF change −1.08%; median recovered absolute WAF 0.02952.
+- Beneficial false fallback: pooled **17/49 → 4/49**. The headline **34.67% → 8.00%** averages five seed rates equally; pooled denominators give different percentages.
+- All four remaining false fallbacks occur at error 0.35. That boundary contains one harmful and four beneficial final conditions.
+- Harmful erase-count CV: median absolute change **+0.02871**. Lower WAF is accompanied by worse wear balance.
+
+[All figures, data links and captions](docs/RESULTS.md) show the symmetry counterexample and trade-off alongside the improvement. No threshold is retuned in this rebuild.
+
+## My contribution
+
+Research records attribute problem framing, conditions, freeze decisions, validation and interpretation to Changyeop Lee; Codex implemented code/tests and ChatGPT assisted mathematical review. This rebuild adds reproducibility tooling and documentation. [Contribution evidence and limits](docs/CONTRIBUTIONS.md).
+
+## Future work and related research
+
+Test change points, stale hints, unequal placement budgets, broader traces and wear-aware recovery under a new protocol. The earlier [Online Hot/Cold FTL](https://github.com/brightlcy/online-hotcold-ftl) measures placement from recent writes on real trace extracts. Both share implementation ancestry; their datasets, policies and WAF intervals differ.
+
+한국어 요약: hint 정답률보다 실제 수명 분리력이 중요했습니다. 지속성 검출은 오전환을 줄였지만 경계조건의 오판과 wear imbalance 비용이 남았습니다.
