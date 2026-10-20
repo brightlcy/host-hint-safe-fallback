@@ -1,0 +1,6 @@
+{
+  "environment_policy": "No third-party packages are required for simulator/reproduce.py. Historical archives retain their own runtime records. Other Python versions are not claimed as validated by this rebuild.",
+  "runtime_dependencies": [],
+  "schema_version": 1,
+  "validated_python": "3.14.6"
+}

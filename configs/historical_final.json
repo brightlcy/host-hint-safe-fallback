@@ -1,0 +1,24 @@
+{
+  "block_size": 512,
+  "evidence_class": "HISTORICAL_REPLAY",
+  "expected_head": "c27b72ae76766a05b6c83de89907ffb00bdf1e71",
+  "expected_tags": {
+    "safe-fallback-v2-protocol-frozen-20260820": "72eb2b472ac9a7b385bca47b106d58ba6d909d53",
+    "safe-fallback-v2-selection-frozen-20260820": "f4fc53f951abf0ad9f9451171a0ac4fb06fc76ea"
+  },
+  "experiment_id": "safe-fallback-v2-final-historical-replay",
+  "logical_pages": 2048,
+  "new_generalization_evidence": false,
+  "note": "Requires a separately restored clean original Git history; archive-only exports cannot satisfy the production provenance guard.",
+  "persistence_k": 2,
+  "selection_file": "results/safe_fallback_v2_development_20260820/frozen_v2_selection.json",
+  "selection_sha256": "174bff65e305f1b78956bfa4b829a4e8f8876a55673a82229e9110653306d27d",
+  "total_writes": 50000,
+  "workload_seeds": [
+    301,
+    302,
+    303,
+    304,
+    305
+  ]
+}

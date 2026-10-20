@@ -1,0 +1,31 @@
+{
+  "calibration_error_rates": [
+    0.0,
+    0.2,
+    0.4,
+    0.5
+  ],
+  "calibration_seeds": [
+    901
+  ],
+  "detector_window": 128,
+  "evidence_class": "NEW_SMOKE",
+  "experiment_id": "new-smoke-v1-calibration-901-measurement-902",
+  "hint_seed": 42,
+  "logical_pages": 256,
+  "measurement_error_rates": [
+    0.0,
+    0.2,
+    0.4,
+    0.5,
+    1.0
+  ],
+  "measurement_seeds": [
+    902
+  ],
+  "metric_definition": "WAF = NAND page programs / host page writes over the full synthetic run. Not the frozen v2 final study.",
+  "note": "New seeds and small workload exercise v1 CLI; no final guard or held-out seeds are used.",
+  "profile": "quick",
+  "stage": "full",
+  "total_writes": 3000
+}
