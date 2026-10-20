@@ -1,0 +1,2 @@
+# Simulator runtime uses the Python standard library only.
+# Python 3.9+ recommended.

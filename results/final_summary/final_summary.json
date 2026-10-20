@@ -1,0 +1,110 @@
+{
+  "error_rates": [
+    0.0,
+    0.05,
+    0.1,
+    0.15,
+    0.2,
+    0.25,
+    0.3,
+    0.35,
+    0.4,
+    0.45,
+    0.5,
+    0.6,
+    0.8,
+    1.0
+  ],
+  "final_seeds": [
+    301,
+    302,
+    303,
+    304,
+    305
+  ],
+  "frozen_constants": {
+    "failure_association_threshold": 0.29980003993028376,
+    "lifetime_boundary_writes": 451,
+    "min_marginal_support": 5
+  },
+  "gate1_harmful_timely_detection": {
+    "passing_seed_count": 5,
+    "required_seed_passes": 4,
+    "result": "PASS"
+  },
+  "gate2_harmful_recovery": {
+    "passing_seed_count": 5,
+    "required_seed_passes": 4,
+    "result": "PASS"
+  },
+  "harmful_recovered_harm_seed_summaries": [
+    {
+      "harmful_condition_count": 5,
+      "harmful_median_recovered_harm": 0.020440000000000236,
+      "workload_seed": 301
+    },
+    {
+      "harmful_condition_count": 4,
+      "harmful_median_recovered_harm": 0.032130000000000214,
+      "workload_seed": 302
+    },
+    {
+      "harmful_condition_count": 4,
+      "harmful_median_recovered_harm": 0.03143000000000007,
+      "workload_seed": 303
+    },
+    {
+      "harmful_condition_count": 4,
+      "harmful_median_recovered_harm": 0.03329000000000004,
+      "workload_seed": 304
+    },
+    {
+      "harmful_condition_count": 4,
+      "harmful_median_recovered_harm": 0.023270000000000124,
+      "workload_seed": 305
+    }
+  ],
+  "harmful_timely_detection_seed_summaries": [
+    {
+      "harmful_condition_count": 5,
+      "harmful_timely_detection_rate": 1.0,
+      "workload_seed": 301
+    },
+    {
+      "harmful_condition_count": 4,
+      "harmful_timely_detection_rate": 1.0,
+      "workload_seed": 302
+    },
+    {
+      "harmful_condition_count": 4,
+      "harmful_timely_detection_rate": 1.0,
+      "workload_seed": 303
+    },
+    {
+      "harmful_condition_count": 4,
+      "harmful_timely_detection_rate": 1.0,
+      "workload_seed": 304
+    },
+    {
+      "harmful_condition_count": 4,
+      "harmful_timely_detection_rate": 1.0,
+      "workload_seed": 305
+    }
+  ],
+  "safety_improvement": {
+    "evidence_seed_count": 5,
+    "result": "PASS",
+    "v1_mean_seed_level_beneficial_false_fallback_rate": 0.3466666666666667,
+    "v2_mean_seed_level_beneficial_false_fallback_rate": 0.08
+  },
+  "secondary_tradeoff_fields": [
+    "waf",
+    "nand_write_pages",
+    "valid_page_migrations",
+    "gc_count",
+    "wear_imbalance_cv"
+  ],
+  "selected_block_size": 512,
+  "selected_persistence_k": 2,
+  "verdict": "FINAL_SUPPORT"
+}

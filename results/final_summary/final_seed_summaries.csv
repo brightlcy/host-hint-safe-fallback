@@ -1,0 +1,6 @@
+beneficial_condition_count,harmful_condition_count,harmful_median_recovered_harm,harmful_timely_detection_rate,v1_beneficial_false_fallback_rate,v2_beneficial_false_fallback_rate,workload_seed
+9,5,0.020440000000000236,1.0,0.3333333333333333,0.0,301
+10,4,0.032130000000000214,1.0,0.7,0.1,302
+10,4,0.03143000000000007,1.0,0.2,0.1,303
+10,4,0.03329000000000004,1.0,0.2,0.1,304
+10,4,0.023270000000000124,1.0,0.3,0.1,305

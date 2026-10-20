@@ -1,0 +1,10 @@
+volume_id,storage_cluster_name,ecstag_list,size(MB)
+10,0,mysql,100
+11,1,mysql,112
+12,0,mysql,101
+20,0,mq,98
+21,1,mq,101
+22,2,mq,106
+30,0,k8s,100
+31,1,k8s,99
+32,3,k8s,105

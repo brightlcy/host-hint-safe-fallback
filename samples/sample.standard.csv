@@ -1,0 +1,4 @@
+timestamp,flow_id,op,lba,size
+0.000,vm0,W,100,4
+0.125,vm0,R,100,2
+0.250,vm1,W,1000,8

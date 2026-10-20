@@ -1,0 +1,20 @@
+{
+  "safe-fallback-v1-core-20260820": {
+    "original_commit": "bb3f3637fb1042caeb8b575ffda215cec7fc3d05",
+    "files_sha256": {
+      "simulator/baseline_ftl.py": "0906212026abd3e0a78252bffb6bd54ace38084bdeb0e5bd3d99f90693b3eea8",
+      "simulator/hot_cold_ftl.py": "90e5af5b140333dfa27215eebc8ec614234e737ade22eaa445db7ae0cef76655",
+      "simulator/metadata.py": "dc30c74d59d9a5eb5e5bfd1ca3aa187cba769d8c99ee3f5230f87862f6f4f916",
+      "simulator/gc_policy.py": "797518975fbb786181c51b064a84bb0c1604cb69cbd963b66bca9893db27dc94",
+      "simulator/lifetime_tracker.py": "9ee3cb32383ca21c7886fea90f12403734a51393d45eba8272838890ea145db1"
+    }
+  },
+  "safe-fallback-v2-protocol-frozen-20260820": {
+    "original_commit": "72eb2b472ac9a7b385bca47b106d58ba6d909d53",
+    "files_sha256": {
+      "simulator/lifetime_ftl.py": "f3bfe4f56ff9581d7aba4d41ac1dcfee87b9c9bfcf019f66d2d2b2597d959b54",
+      "simulator/persistence_detector.py": "5ea37b4f53eeeda17dfd183da17026082bbee3fe8ed2031cb35db2df23f4af08",
+      "simulator/persistence_protocol.py": "07b77cdbd5cfa3299fe280595153fcc0b03e59c6db6f217fb4287729fb5afc27"
+    }
+  }
+}
