@@ -284,6 +284,21 @@ def finalize_existing_run(run_dir, out, record, report_path=None):
         raise ValueError('existing replay has not finished successfully; keep the live process running and inspect its manifest first')
     if prior['source_sha256'] != record['actual_source_sha256']:
         raise ValueError('existing replay source differs from the preserved current simulator')
+    historical_actual = prior.get('actual_source_sha256')
+    if historical_actual is not None and historical_actual != record['actual_source_sha256']:
+        raise ValueError('existing replay executed source differs from the preserved current simulator')
+    historical_verification = prior.get('verification', {})
+    if historical_verification.get('status') != 'PASS' or historical_verification.get('errors'):
+        raise ValueError('existing replay lacks a successful preserved-source verification')
+    source_evidence = {
+        'expected_source_matches_current': True,
+        'separate_executed_digest_recorded': historical_actual is not None,
+        'historical_preservation_check': 'PASS',
+        'interpretation': ('Historical expected and separately recorded executed digests both match current source.'
+                           if historical_actual is not None else
+                           'Legacy worker records expected source and a passing preservation check, not a separate executed digest.'),
+    }
+    record['historical_source_evidence'] = source_evidence
     devices = [row['device_id'] for row in prior['devices']]
     if not devices or len(devices) != len(set(devices)) or set(devices) - {4, 49, 740}:
         raise ValueError('existing replay has an invalid device list')
@@ -299,7 +314,7 @@ def finalize_existing_run(run_dir, out, record, report_path=None):
               'validated_at_utc': utc_now(), 'source_run_manifest_sha256': digest(prior_path),
               'existing_run_dir': str(run_dir), 'runner_sha256': digest(Path(__file__)),
               'archive_sha256': record['verification']['archive_sha256'],
-              'source_sha256': record['actual_source_sha256'], 'devices': record['devices'],
+              'source_sha256': record['actual_source_sha256'], 'historical_source_evidence': source_evidence, 'devices': record['devices'],
               'blocked': [{'dataset': 'MSR prxy_1 100k', 'status': 'BLOCKED', 'reason': 'Input extract absent.'}]}
     write_json(out / 'existing_run_validation.json', result)
     if report_path is not None:

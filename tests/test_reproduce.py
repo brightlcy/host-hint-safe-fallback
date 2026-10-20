@@ -109,5 +109,23 @@ class ReproductionSafetyTest(unittest.TestCase):
                 reproduce.finalize_existing_run(run, output, {})
             self.assertFalse(output.exists())
 
+    def test_finalize_rejects_mismatched_executed_source_and_missing_verification(self):
+        expected = {'simulator/baseline_ftl.py': 'preserved-source'}
+        cases = [
+            ({'actual_source_sha256': {'simulator/baseline_ftl.py': 'different-source'},
+              'verification': {'status': 'PASS', 'errors': []}}, 'executed source differs'),
+            ({}, 'lacks a successful'),
+        ]
+        for additional, message in cases:
+            with self.subTest(message=message), tempfile.TemporaryDirectory() as temporary:
+                run = Path(temporary)
+                prior = {'project': 'online_hotcold_ftl', 'action': 'replay', 'status': 'PASS',
+                         'source_sha256': expected, 'devices': [{'device_id': 4}], **additional}
+                (run / 'run_manifest.json').write_text(json.dumps(prior))
+                output = run / 'validation-output'
+                with self.assertRaisesRegex(ValueError, message):
+                    reproduce.finalize_existing_run(run, output, {'actual_source_sha256': expected})
+                self.assertFalse(output.exists())
+
 if __name__ == '__main__':
     unittest.main()

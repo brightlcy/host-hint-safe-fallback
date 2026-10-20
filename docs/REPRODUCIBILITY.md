@@ -38,7 +38,7 @@ See [rebuild_validation.json](../results/manifests/rebuild_validation.json) for 
 | Evidence | Verification level |
 |---|---|
 | Original tests | 206 passed before reproduction safety checks |
-| Tests with safety checks | 214 passed; algorithm source unchanged |
+| Tests with safety checks | 215 passed; algorithm source unchanged |
 | Frozen source and archived results | Hash/CRC and selection consistency checked |
 | Final v2 study | Historical production replay PASS: 220 run rows, 6,790 detector block rows, 70 condition rows, 5 seed summaries and final summary JSON match archived bytes |
 | New 901/902-seed smoke | Executed separately; not a portfolio performance result |
@@ -63,3 +63,5 @@ python3 -m simulator.run_persistence_final --help
 ```
 
 Treat edited settings as a new experiment and preserve the old evidence. Figure regeneration uses archived research outputs, not new smoke calibration/measurement files; follow the README and figure provenance records.
+
+Finalization requires a recorded PASS preservation check and compares separately recorded executed source digests when present. Legacy workers without that extra digest remain identifiable as legacy evidence; the new report explicitly records that limitation rather than filling in missing historical metadata. Original manifests are never edited.

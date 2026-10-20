@@ -4,7 +4,7 @@ Verified on 2026-10-20. [GitHub CI run](https://github.com/brightlcy/host-hint-s
 
 ## Execution evidence
 
-- 214 local core/reproduction tests PASS, and the same source passes the Ubuntu CI test command.
+- 215 local core/reproduction tests PASS, and the same source passes the Ubuntu CI test command.
 - Five optimized-mode analysis regression tests PASS; damaged numeric/config/checksum fixtures are rejected.
 - Source/archive preservation and plot-source validation PASS.
 - The Quick Start verify/tests/smoke commands passed in an independent project copy and in GitHub CI.
@@ -17,3 +17,5 @@ Verified on 2026-10-20. [GitHub CI run](https://github.com/brightlcy/host-hint-s
 Original-history production replay completed with unchanged frozen guards. All 220 run rows, 6790 block rows, 70 condition rows, 5 seed summaries and final summary JSON are byte-identical to the archived scientific outputs. This is known-seed historical reproduction, not a new untouched holdout. The separate history-free project requires the original Git history to run the production final path.
 
 See [reproducibility](REPRODUCIBILITY.md), [current compact reports](../results/manifests/), [figure data and captions](FIGURES.md), and [Red Team review](RED_TEAM.md). No algorithm or original research result was altered during the rebuild.
+
+The finalizer explicitly validates recorded executed-source hashes when available and labels legacy source metadata. The underlying research simulator and results are unchanged.
