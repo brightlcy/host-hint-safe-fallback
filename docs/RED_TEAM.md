@@ -94,3 +94,7 @@ Remaining editorial follow-up at review time: both `docs/PROVENANCE.md` files st
 ## Author disposition after review
 
 The stale provenance sentence identified above has been corrected in PROVENANCE.md to distinguish the completed separate original-history replay from the history-free export. No unresolved P1/P2 findings remain. The full Alibaba dev740 Hot/Cold replay is still running and is not represented as passed. Remote CI status is reported separately from local checks.
+
+## Final resume-helper verification
+
+The post-review finalizer was independently reviewed and hardened. Recorded executed digests are checked explicitly; legacy metadata is labeled without rewriting history. The focused review and nine safety tests per project pass with no unresolved findings. See [FINALIZER_REVIEW.md](FINALIZER_REVIEW.md).

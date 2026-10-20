@@ -1,6 +1,6 @@
 # Executed validation snapshot
 
-Verified on 2026-10-20. [GitHub CI run](https://github.com/brightlcy/host-hint-safe-fallback/actions/runs/39377644703) **PASS**: core and figure jobs. Tested source commit: `cfd55a16a5d91af5bced16464020e8b015455bf5`. Subsequent documentation-only changes do not replace that recorded run identity.
+Verified on 2026-10-20. [GitHub CI run](https://github.com/brightlcy/host-hint-safe-fallback/actions/runs/39378623780) **PASS**: core and figure jobs. Tested source commit: `2fc876c622017b77b80f040aeefd933f8d9c0d77`. Subsequent documentation-only changes do not replace that recorded run identity.
 
 ## Execution evidence
 
@@ -19,3 +19,5 @@ Original-history production replay completed with unchanged frozen guards. All 2
 See [reproducibility](REPRODUCIBILITY.md), [current compact reports](../results/manifests/), [figure data and captions](FIGURES.md), and [Red Team review](RED_TEAM.md). No algorithm or original research result was altered during the rebuild.
 
 The finalizer explicitly validates recorded executed-source hashes when available and labels legacy source metadata. The underlying research simulator and results are unchanged.
+
+Independent [focused finalizer review](FINALIZER_REVIEW.md) found no unresolved issue after executed-source and legacy-metadata checks were added.

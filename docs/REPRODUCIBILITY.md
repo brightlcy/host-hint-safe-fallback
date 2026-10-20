@@ -8,7 +8,7 @@ python3 reproduce.py verify
 python3 reproduce.py smoke
 ```
 
-`tests` runs the original tests plus eight archive/comparison/configuration safety tests and checks Baseline, Hot/Cold, lifetime, development, and final CLI help. The production final experiment is not invoked by that action. `verify` checks 36 simulator file hashes, ZIP CRC, all 18 archived member hashes, the frozen selection hash referenced by the final manifest, and 8 file/tag references in [FROZEN_SOURCE_SHA256.json](../FROZEN_SOURCE_SHA256.json). A byte match is evidence of preservation, not an independent proof that the original experiment was correct.
+`tests` runs the original tests plus nine archive/comparison/configuration safety tests and checks Baseline, Hot/Cold, lifetime, development, and final CLI help. The production final experiment is not invoked by that action. `verify` checks 36 simulator file hashes, ZIP CRC, all 18 archived member hashes, the frozen selection hash referenced by the final manifest, and 8 file/tag references in [FROZEN_SOURCE_SHA256.json](../FROZEN_SOURCE_SHA256.json). A byte match is evidence of preservation, not an independent proof that the original experiment was correct.
 
 `smoke` runs the original v1 calibration/measurement CLI with a small **NEW_SMOKE** configuration: calibration seed 901, measurement seed 902, 3,000 writes, 256 logical pages, hint seed 42, and the explicit grids in [configs/smoke.json](../configs/smoke.json). This is a new experiment; its calibration is not the frozen 451-write boundary and its results are not substituted for the historical v2 study. It does not execute final seeds 301–305 or bypass a provenance guard.
 
