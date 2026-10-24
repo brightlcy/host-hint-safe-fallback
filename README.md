@@ -54,9 +54,6 @@ B/K was selected on development and frozen before final. [Architecture](docs/ARC
 
 [All figures, data links and captions](docs/RESULTS.md) show the symmetry counterexample and trade-off alongside the improvement. No threshold is retuned in this rebuild.
 
-## My contribution
-
-Research records attribute problem framing, conditions, freeze decisions, validation and interpretation to Changyeop Lee; Codex implemented code/tests and ChatGPT assisted mathematical review. This rebuild adds reproducibility tooling and documentation. [Contribution evidence and limits](docs/CONTRIBUTIONS.md).
 
 ## Future work and related research
 
